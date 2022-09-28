@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MyCar</string>
+
+
+    // color
+    <color name="start_sc_blue">#caf2f5</color>
+    <color name="start_sc_white">#FFFFFF</color>
+</resources>
