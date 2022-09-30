@@ -5,11 +5,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddCar extends AppCompatActivity {
     Button button;
+    EditText modell;
+    EditText baujahr;
+    EditText ps;
+    EditText fahrzeugnummer;
+    EditText getriebeart;
+    EditText aufbauart;
+    EditText treibstoff;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +29,21 @@ public class AddCar extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
-                startActivity(intent);
+                modell = (EditText) findViewById(R.id.textinput_modell);
+                Log.d("TTTT", String.valueOf(modell.getText()));
+                baujahr = (EditText) findViewById(R.id.textinput_baujahr);
+                ps = (EditText) findViewById(R.id.textinput_ps);
+                fahrzeugnummer = (EditText) findViewById(R.id.textinput_fznumber);
+                getriebeart = (EditText) findViewById(R.id.textinput_getriebe);
+                aufbauart = (EditText) findViewById(R.id.textinput_aufbauart);
+                treibstoff = (EditText) findViewById(R.id.textinput_treibstoff);
+//                Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
+//                startActivity(intent);
             }
         });
+
+
+
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using
