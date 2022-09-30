@@ -21,13 +21,25 @@
             android:layout_height="wrap_content"
             android:text="Bild Hochladen" />
 
+        <TextView
+            android:id="@+id/label_modell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Modell" />
+
         <EditText
             android:id="@+id/textinput_modell"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Modell" />
+            android:text="" />
+
+        <TextView
+            android:id="@+id/label_baujahr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Baujahr" />
 
         <EditText
             android:id="@+id/textinput_baujahr"
@@ -35,7 +47,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Baujahr" />
+            android:text="" />
+
+        <TextView
+            android:id="@+id/label_ps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PS" />
 
         <EditText
             android:id="@+id/textinput_ps"
@@ -43,7 +61,13 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="PS" />
+            android:text="" />
+
+        <TextView
+            android:id="@+id/label_fznumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fahrzeugnummer" />
 
         <EditText
             android:id="@+id/textinput_fznumber"
@@ -51,31 +75,41 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Fahrzeugnummer" />
+            android:text="" />
 
-        <EditText
-            android:id="@+id/textinput_getriebe"
+        <TextView
+            android:id="@+id/label_getriebeart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:text="Getriebeart" />
 
-        <EditText
-            android:id="@+id/textinput_aufbauart"
+        <Spinner
+            android:id="@+id/textinput_getriebeart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/label_aufbauart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:text="Aufbauart" />
 
-        <EditText
-            android:id="@+id/textinput_treibstoff"
+        <Spinner
+            android:id="@+id/textinput_aufbauart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/label_treibstoff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
             android:text="Treibstoff" />
+
+        <Spinner
+            android:id="@+id/textinput_treibstoff"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
 
         <Button
             android:id="@+id/add_car_button"
