@@ -3,6 +3,7 @@
 
 
     // color
-    <color name="start_sc_blue">#caf2f5</color>
+    <color name="start_sc_blue">#38a0ff</color>
     <color name="start_sc_white">#FFFFFF</color>
+    <color name="start_sc_black">#000000</color>
 </resources>
