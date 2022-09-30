@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,MainActivity2.class);
+                Intent intent=new Intent(MainActivity.this,Profilepage_home.class);
                 startActivity(intent);
             }
         });
