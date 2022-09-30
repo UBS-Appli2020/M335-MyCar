@@ -5,25 +5,34 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddCar extends AppCompatActivity {
+public class Profilepage_home extends AppCompatActivity {
     Button button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addcar);
+        setContentView(R.layout.profilepage_home);
 
-        button=(Button)findViewById(R.id.add_car_button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
-                startActivity(intent);
-            }
-        });
+//        button=(Button)findViewById(R.id.first_add_car);
+//        button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Profilepage_overview.this,AddCar.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.car_1);
+//        app_layer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("TESTUS","PRESSED");
+//            }
+//        });
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using

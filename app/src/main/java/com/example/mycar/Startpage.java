@@ -3,7 +3,6 @@ package com.example.mycar;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +27,7 @@ public class Startpage extends AppCompatActivity {
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Startpage.this,Profilepage.class);
+                Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
                 startActivity(intent);
             }
         });

@@ -20,7 +20,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".Profilepage"
+            android:name=".Profilepage_overview"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Profilepage_home"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
