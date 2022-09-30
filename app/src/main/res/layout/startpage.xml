@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".Startpage">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="601dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="187dp"
+            app:srcCompat="@drawable/logo_placeholder_image" />
+
+        <TextView
+            android:id="@+id/title_of_application"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="32dp"
+            android:text="MyCar" />
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:orientation="horizontal"
+
+            android:weightSum="1.0">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".20"
+                android:orientation="horizontal" />
+
+            <Button
+                android:id="@+id/start_button"
+
+                android:layout_height="wrap_content"
+                android:layout_weight=".60"
+                android:layout_width="0dip"
+
+
+                android:text="Start!"
+
+
+                tools:ignore="MissingConstraints" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".20"
+
+                android:orientation="horizontal" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/all_rights_reserved"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="© All rights reserved." />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

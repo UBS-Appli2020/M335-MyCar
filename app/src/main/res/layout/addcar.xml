@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/start_sc_blue"
+
+    tools:context=".AddCar">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="601dp"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/upload_picture_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Bild Hochladen" />
+
+        <EditText
+            android:id="@+id/textinput_modell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Modell" />
+
+        <EditText
+            android:id="@+id/textinput_baujahr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Baujahr" />
+
+        <EditText
+            android:id="@+id/textinput_ps"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="PS" />
+
+        <EditText
+            android:id="@+id/textinput_fznumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Fahrzeugnummer" />
+
+        <EditText
+            android:id="@+id/textinput_getriebe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Getriebeart" />
+
+        <EditText
+            android:id="@+id/textinput_aufbauart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Aufbauart" />
+
+        <Button
+            android:id="@+id/add_car_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hinzufügen" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
