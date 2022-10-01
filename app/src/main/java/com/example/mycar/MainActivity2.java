@@ -16,13 +16,13 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        btn02= (ImageButton) findViewById(R.id.imageButton);
-        btn02.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity2.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btn02= (ImageButton) findViewById(R.id.imageButton);
+//        btn02.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(MainActivity2.this,MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 }

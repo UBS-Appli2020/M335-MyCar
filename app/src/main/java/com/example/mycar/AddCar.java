@@ -1,5 +1,6 @@
 package com.example.mycar;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,9 +20,6 @@ public class AddCar extends AppCompatActivity{
     EditText baujahr;
     EditText ps;
     EditText fahrzeugnummer;
-    String getriebeart;
-    String aufbauart;
-    String treibstoff;
 
 
     @Override
@@ -29,7 +27,8 @@ public class AddCar extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addcar);
 
-        //get the spinner from the xml.
+        Intent intent= getIntent();
+        String number = intent.getStringExtra("number_car");
         Spinner dropdown = findViewById(R.id.textinput_getriebeart);
         String[] items = new String[]{"Bitte wählen","Automatikgetriebe", "Schaltgetriebe"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
@@ -49,31 +48,48 @@ public class AddCar extends AppCompatActivity{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                modell = (EditText) findViewById(R.id.textinput_modell);
-                Log.d("VALUE", String.valueOf(modell.getText()));
-                baujahr = (EditText) findViewById(R.id.textinput_baujahr);
-                Log.d("VALUE", String.valueOf(baujahr.getText()));
-                ps = (EditText) findViewById(R.id.textinput_ps);
-                Log.d("VALUE", String.valueOf(ps.getText()));
-                fahrzeugnummer = (EditText) findViewById(R.id.textinput_fznumber);
-                Log.d("VALUE", String.valueOf(fahrzeugnummer.getText()));
-//                getriebeart = (EditText) findViewById(R.id.textinput_getriebe);
-                String getriebeart = dropdown.getSelectedItem().toString();
-                Log.d("VALUE G", getriebeart);
-//                aufbauart = (EditText) findViewById(R.id.textinput_aufbauart);
-                String aufbauart = dropdown2.getSelectedItem().toString();
-                Log.d("VALUE A", aufbauart);
-//                treibstoff = (EditText) findViewById(R.id.textinput_treibstoff);
-                String treibstoff = dropdown3.getSelectedItem().toString();
-                Log.d("VALUE T", treibstoff);
+
+                printAll_informations(dropdown,dropdown2,dropdown3);
+
+                String savename = "Car" + String.valueOf(Integer. parseInt(number) + 1);
+                SharedPreferences sh = getSharedPreferences(savename, MODE_PRIVATE);
+
+                @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh.edit();
+
+                myEdit.putString("modell", modell.getText().toString());
+                myEdit.putString("baujahr", baujahr.getText().toString());
+                myEdit.putString("ps", ps.getText().toString());
+                myEdit.putString("fahrzeugnummer", fahrzeugnummer.getText().toString());
+                myEdit.putString("getriebeart", dropdown.getSelectedItem().toString());
+                myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
+                myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
+                myEdit.apply();
 
                 Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
+//                intent.putExtra("savename", savename);
                 startActivity(intent);
             }
         });
 
 
 
+    }
+
+    private void printAll_informations(Spinner dropdown,Spinner dropdown2,Spinner dropdown3){
+        modell = (EditText) findViewById(R.id.textinput_modell);
+        Log.d("VALUE", String.valueOf(modell.getText()));
+        baujahr = (EditText) findViewById(R.id.textinput_baujahr);
+        Log.d("VALUE", String.valueOf(baujahr.getText()));
+        ps = (EditText) findViewById(R.id.textinput_ps);
+        Log.d("VALUE", String.valueOf(ps.getText()));
+        fahrzeugnummer = (EditText) findViewById(R.id.textinput_fznumber);
+        Log.d("VALUE", String.valueOf(fahrzeugnummer.getText()));
+        String getriebeart = dropdown.getSelectedItem().toString();
+        Log.d("VALUE G", getriebeart);
+        String aufbauart = dropdown2.getSelectedItem().toString();
+        Log.d("VALUE A", aufbauart);
+        String treibstoff = dropdown3.getSelectedItem().toString();
+        Log.d("VALUE T", treibstoff);
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using

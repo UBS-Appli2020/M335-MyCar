@@ -1,43 +1,138 @@
 package com.example.mycar;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+import android.widget.LinearLayout.LayoutParams;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Profilepage_overview extends AppCompatActivity {
     Button button;
+    TextView txtview;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilepage_overview);
 
+        Intent intent= getIntent();
+
+        String number = intent.getStringExtra("number_car");
+        ScrollView app_layer = (ScrollView) findViewById (R.id.base_scrollbar);
+
+//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.base_linearlayout);
+
+        LinearLayout main_profiles = new LinearLayout(this);
+        main_profiles.setOrientation(LinearLayout.VERTICAL);
+
+//        SharedPreferences sh2 = getSharedPreferences("Car4", MODE_PRIVATE);
+//
+//        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh2.edit();
+//        myEdit.putString("modell","Gt 500");
+//        myEdit.apply();
+
+
+        int i = 1;
+        while (i <= Integer.parseInt(number)) {
+
+            String name = "Car" + i;
+            Log.d("TTT",String.valueOf(i));
+            SharedPreferences sh = getSharedPreferences(name, MODE_PRIVATE);
+
+
+
+            LinearLayout linearLayout = new LinearLayout(this);
+//            linearLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+//                    LayoutParams.MATCH_PARENT));
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 600);
+            layoutParams.rightMargin = 132;
+            layoutParams.topMargin = 132;
+            layoutParams.leftMargin = 132;
+
+            linearLayout.setLayoutParams(layoutParams);
+            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+//            linearLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
+            linearLayout.setBackgroundResource(R.drawable.top_background);
+
+
+
+            // Add textviews
+            TextView textView1 = new TextView(this);
+            textView1.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
+                    LayoutParams.MATCH_PARENT));
+            textView1.setGravity(1);
+            textView1.setTextSize(32);
+            textView1.setText(sh.getString("modell",""));
+            textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+
+            linearLayout.addView(textView1);
+
+            main_profiles.addView(linearLayout);
+
+//            TextView textView2 = new TextView(this);
+//            LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
+//                    LayoutParams.WRAP_CONTENT);
+//            layoutParams.gravity = Gravity.RIGHT;
+//            layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
+//            textView2.setLayoutParams(layoutParams);
+//            textView2.setText("programmatically created TextView2");
+//            textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+//            textView2.setBackgroundColor(0xffffdbdb); // hex color 0xAARRGGBB
+//            linearLayout.addView(textView2);
+
+//            app_layer.(linearLayout);
+//            setContentView(linearLayout);
+//            base_scrollbar.addView(linearLayout);
+
+            i++;
+
+        }
+        app_layer.removeAllViews();
+        app_layer.addView(main_profiles);
+
+
+//        String modell_name =  sh.getString("modell","");
+//        txtview = (TextView) findViewById(R.id.modell_name);
+//        txtview.setText(modell_name);
+
         button=(Button)findViewById(R.id.first_add_car);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                gotoAddcar();
+                gotoAddcar(number.toString());
 
             }
         });
 
-        LinearLayout app_layer = (LinearLayout) findViewById (R.id.car_1);
-        app_layer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("TESTUS","PRESSED");
-                gotoProfile();
-            }
-        });
+//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.car_1);
+//        app_layer.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("TESTUS","PRESSED");
+//                gotoProfile();
+//            }
+//        });
     }
 
-    private void gotoAddcar(){
+    private void gotoAddcar(String number){
         Intent intent=new Intent(Profilepage_overview.this,AddCar.class);
+        intent.putExtra("number_car",number);
         startActivity(intent);
     }
 

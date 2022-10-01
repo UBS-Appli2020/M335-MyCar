@@ -1,6 +1,7 @@
 package com.example.mycar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,17 +22,41 @@ public class Startpage extends AppCompatActivity {
 
 
 
+
         start_button =(Button)findViewById(R.id.start_button);
 
 
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String number = check_how_many_cars();
                 Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
+                intent.putExtra("number_car",number);
                 startActivity(intent);
             }
         });
     }
+
+    private String check_how_many_cars(){
+        int counter = 1;
+
+        while (true){
+            String name = "Car" + counter;
+
+            SharedPreferences sh = getSharedPreferences(name, MODE_PRIVATE);
+
+            if (sh.getString("modell","").equals("")){
+                Log.d("TTT","There is/are just " + counter +" Cars.");
+                break;
+            }else{
+                counter++;
+            }
+
+        }
+
+        return String.valueOf(counter);
+    }
+
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
