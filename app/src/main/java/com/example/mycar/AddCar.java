@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class AddCar extends AppCompatActivity{
     Button button, cambutton;
     EditText modell, baujahr, ps, fahrzeugnummer;
+    TextView fehlermeldung;
 
 
     @Override
