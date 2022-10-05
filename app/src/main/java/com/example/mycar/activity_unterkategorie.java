@@ -29,12 +29,15 @@ public class activity_unterkategorie extends AppCompatActivity {
         add_Kategorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (buttonName.equals("2131361895")){
+                Log.d("test", buttonName); // testzwecke
+                if (buttonName.equals("2131362307")){
                     Intent intent = new Intent(activity_unterkategorie.this, AddKategorie.class);
-                    Log.d("test", buttonName);
                     String str1 = add_Kategorie.getText().toString();
-                    intent.putExtra("kfv1", "Hersteller");
-                    intent.putExtra("kfv2", "Felgendurchmesser");
+                    intent.putExtra("v1", "Hersteller");
+                    intent.putExtra("v2", "Felgendurchmesser");
+                    intent.putExtra("v3", "Nabendurchmessen");
+                    intent.putExtra("v4", "Breite");
+                    intent.putExtra("v5", "Farbe/Material");
                     startActivity(intent);
                 }
                 else{
