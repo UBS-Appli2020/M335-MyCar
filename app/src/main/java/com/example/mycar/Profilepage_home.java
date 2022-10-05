@@ -9,35 +9,20 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Profilepage_home extends AppCompatActivity {
-    Button button;
+    Button button5, button2, button3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilepage_home);
 
-//        button=(Button)findViewById(R.id.first_add_car);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(Profilepage_overview.this,AddCar.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.car_1);
-//        app_layer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("TESTUS","PRESSED");
-//            }
-//        });
-
-        button=(Button)findViewById(R.id.button5);
-        button.setOnClickListener(new View.OnClickListener() {
+        button5=(Button)findViewById(R.id.button5);
+        button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
+                String str5 = button5.getText().toString();
+                intent.putExtra(str5,"Groesse");
                 startActivity(intent);
             }
         });
