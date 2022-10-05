@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AddCar extends AppCompatActivity{
+public class AddCar extends AppCompatActivity {
     Button button, cambutton;
     EditText modell, baujahr, ps, fahrzeugnummer;
     TextView fehlermeldung;
@@ -28,35 +28,34 @@ public class AddCar extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addcar);
 
-        Intent intent= getIntent();
+        Intent intent = getIntent();
         String number = intent.getStringExtra("number_car");
         Spinner dropdown = findViewById(R.id.textinput_getriebeart);
-        String[] items = new String[]{"Bitte wählen","Automatikgetriebe", "Schaltgetriebe"};
+        String[] items = new String[]{"Bitte wählen", "Automatikgetriebe", "Schaltgetriebe"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         dropdown.setAdapter(adapter);
 
         Spinner dropdown2 = findViewById(R.id.textinput_aufbauart);
-        String[] items2 = new String[]{"Bitte wählen","Bus", "Cabriolet","Coupé","Kleinwagen","Kombi","Minivan","Limousine","Pick-up","SUV"};
+        String[] items2 = new String[]{"Bitte wählen", "Bus", "Cabriolet", "Coupé", "Kleinwagen", "Kombi", "Minivan", "Limousine", "Pick-up", "SUV"};
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items2);
         dropdown2.setAdapter(adapter2);
 
         Spinner dropdown3 = findViewById(R.id.textinput_treibstoff);
-        String[] items3 = new String[]{"Bitte wählen","Benzin", "Diesel","Elektro","Hybrid"};
+        String[] items3 = new String[]{"Bitte wählen", "Benzin", "Diesel", "Elektro", "Hybrid"};
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
 
-        button=(Button)findViewById(R.id.add_car_button);
+        button = (Button) findViewById(R.id.add_car_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                printAll_informations(dropdown,dropdown2,dropdown3);
+                printAll_informations(dropdown, dropdown2, dropdown3);
 
-                String savename = "Car" + String.valueOf(Integer. parseInt(number) + 1);
-                SharedPreferences sh = getSharedPreferences(savename, MODE_PRIVATE);
-
-                @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh.edit();
-                if(!modell.getText().toString().equals("") && !baujahr.getText().toString().equals("") && !ps.getText().toString().equals("") && !fahrzeugnummer.getText().toString().equals("") && !dropdown.getSelectedItem().toString().equals("") && !dropdown2.getSelectedItem().toString().equals("") && !dropdown3.getSelectedItem().toString().equals("")) {
+                if (!modell.getText().toString().equals("") && !baujahr.getText().toString().equals("") && !ps.getText().toString().equals("") && !fahrzeugnummer.getText().toString().equals("") && !dropdown.getSelectedItem().toString().equals("") && !dropdown2.getSelectedItem().toString().equals("") && !dropdown3.getSelectedItem().toString().equals("")) {
+                    String savename = "Car" + String.valueOf(Integer.parseInt(number) + 1);
+                    SharedPreferences sh = getSharedPreferences(savename, MODE_PRIVATE);
+                    @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh.edit();
                     myEdit.putString("modell", modell.getText().toString());
                     myEdit.putString("baujahr", baujahr.getText().toString());
                     myEdit.putString("ps", ps.getText().toString());
@@ -79,7 +78,7 @@ public class AddCar extends AppCompatActivity{
             }
         });
 
-        cambutton=(Button)findViewById(R.id.upload_picture_button);
+        cambutton = (Button) findViewById(R.id.upload_picture_button);
         cambutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,17 +86,16 @@ public class AddCar extends AppCompatActivity{
                     Intent intent = new Intent();
                     intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                     startActivity(intent);
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
 
 
-
     }
 
-    private void printAll_informations(Spinner dropdown,Spinner dropdown2,Spinner dropdown3){
+    private void printAll_informations(Spinner dropdown, Spinner dropdown2, Spinner dropdown3) {
         modell = (EditText) findViewById(R.id.textinput_modell);
         Log.d("VALUE", String.valueOf(modell.getText()));
         baujahr = (EditText) findViewById(R.id.textinput_baujahr);
