@@ -21,8 +21,8 @@ public class Profilepage_home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
-                String str5 = button5.getText().toString();
-                intent.putExtra(str5,"Groesse");
+                String str5 = String.valueOf(button5.getId());
+                intent.putExtra("buttonName",str5);
                 startActivity(intent);
             }
         });
