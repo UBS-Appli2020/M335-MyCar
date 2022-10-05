@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Profilepage_home extends AppCompatActivity {
     TextView modell_name;
     Button k1_button;
+    ImageButton back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,18 @@ public class Profilepage_home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        back_button = (ImageButton) findViewById(R.id.back_button);
+
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profilepage_home.this, Profilepage_overview.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using
