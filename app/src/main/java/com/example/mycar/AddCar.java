@@ -63,10 +63,12 @@ public class AddCar extends AppCompatActivity{
                 myEdit.putString("getriebeart", dropdown.getSelectedItem().toString());
                 myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
                 myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
+
                 myEdit.apply();
 
                 Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
-//                intent.putExtra("savename", savename);
+
+                intent.putExtra("number_car", String.valueOf(Integer.parseInt(number+1)));
                 startActivity(intent);
             }
         });

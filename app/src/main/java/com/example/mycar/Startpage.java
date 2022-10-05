@@ -10,6 +10,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+
 public class Startpage extends AppCompatActivity {
     Button start_button;
 
@@ -29,12 +31,21 @@ public class Startpage extends AppCompatActivity {
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String number = check_how_many_cars();
-                Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
-                intent.putExtra("number_car",number);
-                startActivity(intent);
+                delete_all();
+//                String number = check_how_many_cars();
+//                Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
+//                intent.putExtra("number_car",number);
+//                startActivity(intent);
             }
         });
+    }
+
+    private void delete_all(){
+        File sharedPreferenceFile = new File("/data/data/"+ getPackageName()+ "/shared_prefs/");
+        File[] listFiles = sharedPreferenceFile.listFiles();
+        for (File file : listFiles) {
+            file.delete();
+        }
     }
 
     private String check_how_many_cars(){
