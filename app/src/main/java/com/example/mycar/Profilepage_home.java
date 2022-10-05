@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Profilepage_home extends AppCompatActivity {
     TextView modell_name;
-    Button k1_button;
+    Button k1_button, k2_button;
     ImageButton back_button;
 
     @Override
@@ -30,20 +30,32 @@ public class Profilepage_home extends AppCompatActivity {
         modell_name=(TextView)findViewById(R.id.modell_name);
         modell_name.setText(text);
 
+        // Find View by ID Buttons
         k1_button = (Button) findViewById(R.id.k1_button);
+        k2_button = (Button) findViewById(R.id.k2_button);
 
         k1_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
-                String str5 = String.valueOf(k1_button.getId());
+                String str5 = String.valueOf(k1_button.getText());
                 intent.putExtra("buttonName",str5);
                 startActivity(intent);
             }
         });
 
-        back_button = (ImageButton) findViewById(R.id.back_button);
+        k2_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
+                String str5 = String.valueOf(k2_button.getText());
+                intent.putExtra("buttonName",str5);
+                startActivity(intent);
+            }
+        });
 
+
+        back_button = (ImageButton) findViewById(R.id.back_button);
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
