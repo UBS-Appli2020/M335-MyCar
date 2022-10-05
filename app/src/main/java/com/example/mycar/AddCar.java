@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,12 +18,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddCar extends AppCompatActivity{
-    Button button;
-    EditText modell;
-    EditText baujahr;
-    EditText ps;
-    EditText fahrzeugnummer;
-    TextView fehlermeldung;
+    Button button, cambutton;
+    EditText modell, baujahr, ps, fahrzeugnummer;
 
 
     @Override
@@ -77,6 +74,20 @@ public class AddCar extends AppCompatActivity{
                     fehlermeldung = (TextView) findViewById(R.id.fehlermeldung);
                     fehlermeldung.setText("Bitte alle Felder ausfuellen!!");
                     fehlermeldung.setBackgroundColor(Color.parseColor("#f82c00"));
+                }
+            }
+        });
+
+        cambutton=(Button)findViewById(R.id.upload_picture_button);
+        cambutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivity(intent);
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
             }
         });
