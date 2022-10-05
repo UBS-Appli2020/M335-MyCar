@@ -3,6 +3,7 @@ package com.example.mycar;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,7 @@ public class AddCar extends AppCompatActivity{
     EditText baujahr;
     EditText ps;
     EditText fahrzeugnummer;
+    TextView fehlermeldung;
 
 
     @Override
@@ -55,21 +58,26 @@ public class AddCar extends AppCompatActivity{
                 SharedPreferences sh = getSharedPreferences(savename, MODE_PRIVATE);
 
                 @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh.edit();
+                if(!modell.getText().toString().equals("") && !baujahr.getText().toString().equals("") && !ps.getText().toString().equals("") && !fahrzeugnummer.getText().toString().equals("") && !dropdown.getSelectedItem().toString().equals("") && !dropdown2.getSelectedItem().toString().equals("") && !dropdown3.getSelectedItem().toString().equals("")) {
+                    myEdit.putString("modell", modell.getText().toString());
+                    myEdit.putString("baujahr", baujahr.getText().toString());
+                    myEdit.putString("ps", ps.getText().toString());
+                    myEdit.putString("fahrzeugnummer", fahrzeugnummer.getText().toString());
+                    myEdit.putString("getriebeart", dropdown.getSelectedItem().toString());
+                    myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
+                    myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
 
-                myEdit.putString("modell", modell.getText().toString());
-                myEdit.putString("baujahr", baujahr.getText().toString());
-                myEdit.putString("ps", ps.getText().toString());
-                myEdit.putString("fahrzeugnummer", fahrzeugnummer.getText().toString());
-                myEdit.putString("getriebeart", dropdown.getSelectedItem().toString());
-                myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
-                myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
+                    myEdit.apply();
 
-                myEdit.apply();
+                    Intent intent = new Intent(AddCar.this, Profilepage_overview.class);
 
-                Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
-
-                intent.putExtra("number_car", String.valueOf(Integer.parseInt(number)+1));
-                startActivity(intent);
+                    intent.putExtra("number_car", String.valueOf(Integer.parseInt(number) + 1));
+                    startActivity(intent);
+                } else {
+                    fehlermeldung = (TextView) findViewById(R.id.fehlermeldung);
+                    fehlermeldung.setText("Bitte alle Felder ausfuellen!!");
+                    fehlermeldung.setBackgroundColor(Color.parseColor("#f82c00"));
+                }
             }
         });
 

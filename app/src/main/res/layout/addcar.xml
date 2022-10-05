@@ -111,6 +111,12 @@
             android:layout_height="wrap_content" />
 
 
+        <TextView
+            android:id="@+id/fehlermeldung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+
         <Button
             android:id="@+id/add_car_button"
             android:layout_width="match_parent"
