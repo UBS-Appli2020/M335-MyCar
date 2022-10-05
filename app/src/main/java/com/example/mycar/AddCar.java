@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -15,11 +16,8 @@ import android.widget.Spinner;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AddCar extends AppCompatActivity{
-    Button button;
-    EditText modell;
-    EditText baujahr;
-    EditText ps;
-    EditText fahrzeugnummer;
+    Button button, cambutton;
+    EditText modell, baujahr, ps, fahrzeugnummer;
 
 
     @Override
@@ -70,6 +68,20 @@ public class AddCar extends AppCompatActivity{
 
                 intent.putExtra("number_car", String.valueOf(Integer.parseInt(number)+1));
                 startActivity(intent);
+            }
+        });
+
+        cambutton=(Button)findViewById(R.id.upload_picture_button);
+        cambutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent intent = new Intent();
+                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivity(intent);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
             }
         });
 
