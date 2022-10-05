@@ -102,6 +102,14 @@ public class Profilepage_overview extends AppCompatActivity {
 
             i++;
 
+            linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("TESTUS","PRESSED");
+                gotoProfile(name);
+            }
+        });
+
         }
         app_layer.removeAllViews();
         app_layer.addView(main_profiles);
@@ -110,6 +118,7 @@ public class Profilepage_overview extends AppCompatActivity {
 //        String modell_name =  sh.getString("modell","");
 //        txtview = (TextView) findViewById(R.id.modell_name);
 //        txtview.setText(modell_name);
+
 
         button=(Button)findViewById(R.id.first_add_car);
         button.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +145,10 @@ public class Profilepage_overview extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void gotoProfile(){
+    private void gotoProfile(String carname){
         Intent intent=new Intent(Profilepage_overview.this,Profilepage_home.class);
+        Log.d("uebergabe",carname);
+        intent.putExtra("car",carname);
         startActivity(intent);
     }
 
