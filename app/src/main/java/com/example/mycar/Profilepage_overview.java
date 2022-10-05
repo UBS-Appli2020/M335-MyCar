@@ -47,7 +47,7 @@ public class Profilepage_overview extends AppCompatActivity {
 //        myEdit.putString("modell","Gt 500");
 //        myEdit.apply();
 
-
+        Log.d("TTT",number);
         int i = 1;
         while (i <= Integer.parseInt(number)) {
 

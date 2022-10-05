@@ -68,7 +68,7 @@ public class AddCar extends AppCompatActivity{
 
                 Intent intent=new Intent(AddCar.this, Profilepage_overview.class);
 
-                intent.putExtra("number_car", String.valueOf(Integer.parseInt(number+1)));
+                intent.putExtra("number_car", String.valueOf(Integer.parseInt(number)+1));
                 startActivity(intent);
             }
         });

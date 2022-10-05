@@ -21,21 +21,17 @@ public class Startpage extends AppCompatActivity {
         setContentView(R.layout.startpage);
 
 
-
-
-
-
         start_button =(Button)findViewById(R.id.start_button);
 
 
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                delete_all();
-//                String number = check_how_many_cars();
-//                Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
-//                intent.putExtra("number_car",number);
-//                startActivity(intent);
+//                delete_all();
+                String number = check_how_many_cars();
+                Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
+                intent.putExtra("number_car",number);
+                startActivity(intent);
             }
         });
     }
@@ -50,22 +46,30 @@ public class Startpage extends AppCompatActivity {
 
     private String check_how_many_cars(){
         int counter = 1;
+        int previous_counter = 0;
 
         while (true){
             String name = "Car" + counter;
 
             SharedPreferences sh = getSharedPreferences(name, MODE_PRIVATE);
 
+
             if (sh.getString("modell","").equals("")){
+
                 Log.d("TTT","There is/are just " + counter +" Cars.");
                 break;
             }else{
                 counter++;
+                previous_counter++;
             }
 
         }
+        if (previous_counter == 0){
+             return "0";
+        }else{
+            return String.valueOf(counter);
+        }
 
-        return String.valueOf(counter);
     }
 
     public static int getScreenWidth() {
