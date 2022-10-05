@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,12 +32,25 @@ public class Profilepage_home extends AppCompatActivity {
 //                Log.d("TESTUS","PRESSED");
 //            }
 //        });
+
+        button=(Button)findViewById(R.id.button5);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
+                startActivity(intent);
+            }
+        });
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using
     // onSaveInstanceState(). We restore some state in onCreate(), while we can optionally restore
     // other state here, possibly usable after onStart() has completed.
     // The savedInstanceState Bundle is same as the one used in onCreate().
+
+
+
+
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
