@@ -11,7 +11,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Profilepage_home extends AppCompatActivity {
-    TextView button5;
+    TextView modell_name;
+    Button k1_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,20 @@ public class Profilepage_home extends AppCompatActivity {
         SharedPreferences sh = getSharedPreferences(car,MODE_PRIVATE);
         String text = sh.getString("modell","");
 
-        button5=(TextView)findViewById(R.id.modell_name);
-        button5.setText(text);
-//        button5.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
-//                String str5 = String.valueOf(button5.getId());
-//                intent.putExtra("buttonName",str5);
-//                startActivity(intent);
-//            }
-//        });
+        modell_name=(TextView)findViewById(R.id.modell_name);
+        modell_name.setText(text);
+
+        k1_button = (Button) findViewById(R.id.k1_button);
+
+        k1_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
+                String str5 = String.valueOf(k1_button.getId());
+                intent.putExtra("buttonName",str5);
+                startActivity(intent);
+            }
+        });
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using
