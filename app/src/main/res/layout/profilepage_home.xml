@@ -8,32 +8,34 @@
     tools:context=".Profilepage_home">
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/k1_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Felgen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/back_button"
+        app:layout_constraintVertical_bias="0.213"
         tools:ignore="MissingConstraints" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logo"
         android:layout_width="66dp"
         android:layout_height="66dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="18dp"
         android:layout_marginBottom="519dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+        app:layout_constraintEnd_toStartOf="@+id/back_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_placeholder_image"
         tools:ignore="MissingConstraints" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="258dp"
@@ -42,22 +44,59 @@
         android:layout_marginBottom="531dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/modell_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:layout_marginTop="39dp"
         android:layout_marginEnd="173dp"
         android:layout_marginBottom="255dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/button5"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/k1_button"
+        app:layout_constraintEnd_toStartOf="@+id/back_button"
+        app:layout_constraintStart_toEndOf="@+id/logo"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/k2_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reifen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.425" />
+
+    <Button
+        android:id="@+id/k3_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fahrwerk"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.526"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/k4_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Motor"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.63"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>

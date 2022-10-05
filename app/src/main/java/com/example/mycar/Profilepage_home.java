@@ -1,31 +1,40 @@
 package com.example.mycar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Profilepage_home extends AppCompatActivity {
-    Button button5, button2, button3;
+    TextView button5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilepage_home);
 
-        button5=(Button)findViewById(R.id.button5);
-        button5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
-                String str5 = String.valueOf(button5.getId());
-                intent.putExtra("buttonName",str5);
-                startActivity(intent);
-            }
-        });
+        Intent intent = getIntent();
+        String car = intent.getStringExtra("car");
+
+        SharedPreferences sh = getSharedPreferences(car,MODE_PRIVATE);
+        String text = sh.getString("modell","");
+
+        button5=(TextView)findViewById(R.id.modell_name);
+        button5.setText(text);
+//        button5.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
+//                String str5 = String.valueOf(button5.getId());
+//                intent.putExtra("buttonName",str5);
+//                startActivity(intent);
+//            }
+//        });
     }
 
     // This callback is called only when there is a saved instance that is previously saved by using
