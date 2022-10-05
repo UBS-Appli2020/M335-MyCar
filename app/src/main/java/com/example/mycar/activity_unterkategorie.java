@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Set;
+
 public class activity_unterkategorie extends AppCompatActivity {
     Button add_Kategorie;
 
@@ -22,13 +24,23 @@ public class activity_unterkategorie extends AppCompatActivity {
         Intent intent = getIntent();
         String buttonName = intent.getStringExtra("buttonName");
 
+
         add_Kategorie=(Button)findViewById(R.id.add_Kategorie);
         add_Kategorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(activity_unterkategorie.this, add_Kategorie.getClass());
-                Log.d("test",buttonName);
-                startActivity(intent);
+                if (buttonName.equals("2131361895")){
+                    Intent intent = new Intent(activity_unterkategorie.this, AddKategorie.class);
+                    Log.d("test", buttonName);
+                    String str1 = add_Kategorie.getText().toString();
+                    intent.putExtra("kfv1", "Hersteller");
+                    intent.putExtra("kfv2", "Felgendurchmesser");
+                    startActivity(intent);
+                }
+                else{
+                    Log.d("FAIL", "FAIL");
+                }
+
             }
         });
 
