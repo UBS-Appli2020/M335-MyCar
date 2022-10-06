@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -59,6 +61,7 @@ public class Profilepage_overview extends AppCompatActivity {
 
 
 
+
             LinearLayout linearLayout = new LinearLayout(this);
 //            linearLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 //                    LayoutParams.MATCH_PARENT));
@@ -68,11 +71,25 @@ public class Profilepage_overview extends AppCompatActivity {
             layoutParams.leftMargin = 132;
 
             linearLayout.setLayoutParams(layoutParams);
-            linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
 //            linearLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
             linearLayout.setBackgroundResource(R.drawable.top_background);
 
+            LinearLayout.LayoutParams layoutParams2 =new LinearLayout.LayoutParams(300, 300);
+            layoutParams2.gravity=Gravity.CENTER;
 
+            Bitmap bitmap = (Bitmap) intent.getParcelableExtra("Bitmap");
+            ImageView imageview = new ImageView(this);
+//            TODO
+            imageview.setImageBitmap(bitmap);
+            imageview.setLayoutParams(layoutParams2);
+
+
+
+
+
+
+            linearLayout.addView(imageview);
 
             // Add textviews
             TextView textView1 = new TextView(this);

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -45,14 +46,15 @@ public class AddCar extends AppCompatActivity {
 
     PreferenceManager preferenceManager;
     Intent camera;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addcar);
 
-        StrictMode.VmPolicy.Builder builder=new StrictMode.VmPolicy.Builder();
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        preferenceManager=PreferenceManager.getInstance(this);
+        preferenceManager = PreferenceManager.getInstance(this);
 
         Intent intent = getIntent();
         String number = intent.getStringExtra("number_car");
@@ -71,13 +73,20 @@ public class AddCar extends AppCompatActivity {
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
 
-        imageView3=(ImageView)findViewById(R.id.imageView3);
+        imageView3 = (ImageView) findViewById(R.id.imageView3);
         button = (Button) findViewById(R.id.add_car_button);
+
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 printAll_informations(dropdown, dropdown2, dropdown3);
+
+                // Bitmap convert ot ByteArray
+                imageView3.setDrawingCacheEnabled(true);
+                Bitmap bm = imageView3.getDrawingCache();
+
 
                 if (!modell.getText().toString().equals("") && !baujahr.getText().toString().equals("") && !ps.getText().toString().equals("") && !fahrzeugnummer.getText().toString().equals("") && !dropdown.getSelectedItem().toString().equals("") && !dropdown2.getSelectedItem().toString().equals("") && !dropdown3.getSelectedItem().toString().equals("")) {
                     String savename = "Car" + String.valueOf(Integer.parseInt(number) + 1);
@@ -97,6 +106,7 @@ public class AddCar extends AppCompatActivity {
                     Intent intent = new Intent(AddCar.this, Profilepage_overview.class);
 
                     intent.putExtra("number_car", String.valueOf(Integer.parseInt(number) + 1));
+                    intent.putExtra("Bitmap", bm);
                     startActivity(intent);
                 } else {
                     fehlermeldung = (TextView) findViewById(R.id.fehlermeldung);
@@ -159,10 +169,15 @@ public class AddCar extends AppCompatActivity {
     @SuppressLint("MissingSuperCall")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(resultCode == RESULT_OK){
+        if (resultCode == RESULT_OK) {
             imageView3.setImageURI(imageView_uri);
+
+
+
+
         }
     }
+
 
 
     private void printAll_informations(Spinner dropdown, Spinner dropdown2, Spinner dropdown3) {
