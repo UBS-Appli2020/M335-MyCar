@@ -102,12 +102,15 @@ public class Profilepage_overview extends AppCompatActivity {
 
             linearLayout.addView(imageview);
 
+            LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+            layoutParams3.bottomMargin=70;
+
             // Add textviews
             TextView textView1 = new TextView(this);
-            textView1.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-                    LayoutParams.MATCH_PARENT));
+            textView1.setLayoutParams(layoutParams3);
             textView1.setGravity(1);
             textView1.setTextSize(32);
+
             textView1.setText(sh.getString("modell",""));
             textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
 

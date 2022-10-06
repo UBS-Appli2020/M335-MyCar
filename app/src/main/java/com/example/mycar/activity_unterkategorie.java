@@ -198,8 +198,6 @@ public class activity_unterkategorie extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private int count(String car, String kategorie){
@@ -214,7 +212,7 @@ public class activity_unterkategorie extends AppCompatActivity {
                 SharedPreferences sh = getSharedPreferences(car, MODE_PRIVATE);
 
                 if (sh.getString(name,"").equals("")){
-
+                    counter--;
                     break;
                 }else{
                     counter++;
@@ -223,7 +221,7 @@ public class activity_unterkategorie extends AppCompatActivity {
 
             }
 
-            return (counter-1);
+            return (counter);
 
         }
     }
