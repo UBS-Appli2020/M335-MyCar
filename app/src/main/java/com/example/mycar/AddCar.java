@@ -34,6 +34,7 @@ import androidx.core.app.ActivityCompat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.Arrays;
 
 public class AddCar extends AppCompatActivity {
     private static final int PERMISSION_CODE = 1234;
@@ -87,6 +88,12 @@ public class AddCar extends AppCompatActivity {
                 imageView3.setDrawingCacheEnabled(true);
                 Bitmap bm = imageView3.getDrawingCache();
 
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+
+                byte[] compressImage = baos.toByteArray();
+                String sEncodedImage = Base64.encodeToString(compressImage, Base64.DEFAULT);
+
 
                 if (!modell.getText().toString().equals("") && !baujahr.getText().toString().equals("") && !ps.getText().toString().equals("") && !fahrzeugnummer.getText().toString().equals("") && !dropdown.getSelectedItem().toString().equals("") && !dropdown2.getSelectedItem().toString().equals("") && !dropdown3.getSelectedItem().toString().equals("")) {
                     String savename = "Car" + String.valueOf(Integer.parseInt(number) + 1);
@@ -99,6 +106,9 @@ public class AddCar extends AppCompatActivity {
                     myEdit.putString("getriebeart", dropdown.getSelectedItem().toString());
                     myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
                     myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
+                    myEdit.putString("bitmap", sEncodedImage);
+
+
 
 
                     myEdit.apply();
@@ -106,7 +116,7 @@ public class AddCar extends AppCompatActivity {
                     Intent intent = new Intent(AddCar.this, Profilepage_overview.class);
 
                     intent.putExtra("number_car", String.valueOf(Integer.parseInt(number) + 1));
-                    intent.putExtra("Bitmap", bm);
+                   /// intent.putExtra("Bitmap",bm);
                     startActivity(intent);
                 } else {
                     fehlermeldung = (TextView) findViewById(R.id.fehlermeldung);
@@ -171,7 +181,6 @@ public class AddCar extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (resultCode == RESULT_OK) {
             imageView3.setImageURI(imageView_uri);
-
 
 
 
