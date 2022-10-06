@@ -66,7 +66,7 @@ public class activity_unterkategorie extends AppCompatActivity {
 
             LinearLayout linearLayout = new LinearLayout(this);
 
-//
+//          Setzt das ganze Layout
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 600);
             layoutParams.rightMargin = 132;
             layoutParams.topMargin = 132;
@@ -85,7 +85,7 @@ public class activity_unterkategorie extends AppCompatActivity {
             tv1layoutParams.topMargin = 100;
 
 
-
+//          Setzt alle Textviews mit den Daten und dem Layout
             TextView textView1 = new TextView(this);
             textView1.setLayoutParams(tv1layoutParams);
             textView1.setGravity(1);
@@ -131,26 +131,33 @@ public class activity_unterkategorie extends AppCompatActivity {
             textView5.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
             linearLayout.addView(textView5);
 
+//          Fügt alles ins main_profiles layout
             main_profiles.addView(linearLayout);
 
             i++;
 
         }
+
+//      Löscht alles aus der View und fügt alles hinzu
         app_layer.removeAllViews();
         app_layer.addView(main_profiles);
 
-
+//      Hollt sich den Button
         add_Kategorie=(Button)findViewById(R.id.add_Kategorie);
         add_Kategorie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//              Setzt die Infrmationen für die Übergabe
                 Intent intent = new Intent(activity_unterkategorie.this, AddKategorie.class);
                 intent.putExtra("car",car);
                 intent.putExtra("kategorie",buttonName);
                 Log.d("test", buttonName); // testzwecke
-                if (buttonName.equals("Felgen")){
+
+//              Bei Felgen
+                if (buttonName.equals("Felgen")) {
                     Log.d("test", buttonName);
 
+//                  Setzt alle Informationen
                     String str1 = add_Kategorie.getText().toString();
                     intent.putExtra("v1", "Hersteller");
                     intent.putExtra("v2", "Felgendurchmesser");
@@ -159,8 +166,11 @@ public class activity_unterkategorie extends AppCompatActivity {
                     intent.putExtra("v5", "Farbe/Material");
                     startActivity(intent);
                 }
+//              Bei Reifen
                 else if(buttonName.equals("Reifen")){
                     Log.d("Button 2: ", "Passed");
+
+//                  Setzt alle Informationen
                     String str2 = add_Kategorie.getText().toString();
                     intent.putExtra("v1", "Hersteller");
                     intent.putExtra("v2", "Breite");
