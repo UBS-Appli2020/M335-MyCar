@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -78,10 +80,19 @@ public class Profilepage_overview extends AppCompatActivity {
             LinearLayout.LayoutParams layoutParams2 =new LinearLayout.LayoutParams(300, 300);
             layoutParams2.gravity=Gravity.CENTER;
 
-            Bitmap bitmap = (Bitmap) intent.getParcelableExtra("Bitmap");
+
             ImageView imageview = new ImageView(this);
 //            TODO
-            imageview.setImageBitmap(bitmap);
+            if(sh.contains("bitmap"))
+            {
+
+                String encodedImage = sh.getString("bitmap",null);
+
+                byte[] b = Base64.decode(encodedImage, Base64.DEFAULT);
+
+                Bitmap bitmap2 = BitmapFactory.decodeByteArray(b, 0, b.length);
+
+            imageview.setImageBitmap(bitmap2);
             imageview.setLayoutParams(layoutParams2);
 
 
@@ -104,6 +115,7 @@ public class Profilepage_overview extends AppCompatActivity {
 
 
             linearLayout.addView(textView1);
+            }
 
             main_profiles.addView(linearLayout);
 
