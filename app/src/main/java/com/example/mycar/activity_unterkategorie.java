@@ -98,11 +98,16 @@ public class activity_unterkategorie extends AppCompatActivity {
 
                 ArrayList<String> keys = new ArrayList<String>(all_keys);
 
+                LinearLayout.LayoutParams tv1layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
+                tv1layoutParams.topMargin = 100;
+
+
+
                 TextView textView1 = new TextView(this);
-                textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView1.setLayoutParams(tv1layoutParams);
                 textView1.setGravity(1);
                 textView1.setTextSize(16);
+
                 textView1.setText(String.valueOf(keys.get(0) + ": " + kategorie.get(keys.get(0))));
                 textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
                 linearLayout.addView(textView1);

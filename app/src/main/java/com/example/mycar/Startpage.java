@@ -82,7 +82,7 @@ public class Startpage extends AppCompatActivity {
     // The savedInstanceState Bundle is same as the one used in onCreate().
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
+        super.onRestoreInstanceState(savedInstanceState);//hallo ich bin eine frosch
         Log.d("LIFECYCLE", "onRestoreInstanceState");
     }
 
