@@ -1,32 +1,58 @@
 package com.example.mycar;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.ContentProvider;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 public class AddCar extends AppCompatActivity {
+    private static final int PERMISSION_CODE = 1234;
+    private static final int CAPTURE_CODE = 1001;
+    Uri imageView_uri;
     Button button, cambutton;
     EditText modell, baujahr, ps, fahrzeugnummer;
     TextView fehlermeldung;
+    ImageView imageView3;
 
-
+    PreferenceManager preferenceManager;
+    Intent camera;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addcar);
+
+        StrictMode.VmPolicy.Builder builder=new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        preferenceManager=PreferenceManager.getInstance(this);
 
         Intent intent = getIntent();
         String number = intent.getStringExtra("number_car");
@@ -45,6 +71,7 @@ public class AddCar extends AppCompatActivity {
         ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items3);
         dropdown3.setAdapter(adapter3);
 
+        imageView3=(ImageView)findViewById(R.id.imageView3);
         button = (Button) findViewById(R.id.add_car_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +91,7 @@ public class AddCar extends AppCompatActivity {
                     myEdit.putString("aufbauartart", dropdown2.getSelectedItem().toString());
                     myEdit.putString("treibstoff", dropdown3.getSelectedItem().toString());
 
+
                     myEdit.apply();
 
                     Intent intent = new Intent(AddCar.this, Profilepage_overview.class);
@@ -78,22 +106,64 @@ public class AddCar extends AppCompatActivity {
             }
         });
 
+        // Kamera
         cambutton = (Button) findViewById(R.id.upload_picture_button);
         cambutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    Intent intent = new Intent();
-                    intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (checkSelfPermission(Manifest.permission.CAMERA) ==
+                            PackageManager.PERMISSION_DENIED ||
+                            checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
+                                    PackageManager.PERMISSION_DENIED) {
+
+                        String[] permission = {Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+                        requestPermissions(permission, PERMISSION_CODE);
+                    } else {
+                        openCamera();
+
+                    }
+                } else {
+                    openCamera();
                 }
             }
         });
-
-
     }
+
+    private void openCamera() {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, "new image");
+        values.put(MediaStore.Images.Media.DESCRIPTION, "From the Camera");
+        imageView_uri = getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+
+        Intent camintent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        camintent.putExtra(MediaStore.EXTRA_OUTPUT, imageView_uri);
+        startActivityForResult(camintent, CAPTURE_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case PERMISSION_CODE:
+                if (grantResults.length > 0 && grantResults[0] ==
+                        PackageManager.PERMISSION_GRANTED) {
+                    openCamera();
+                } else {
+                    Toast.makeText(this, "Zugriff verweigert!", Toast.LENGTH_SHORT).show();
+                }
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(resultCode == RESULT_OK){
+            imageView3.setImageURI(imageView_uri);
+        }
+    }
+
 
     private void printAll_informations(Spinner dropdown, Spinner dropdown2, Spinner dropdown3) {
         modell = (EditText) findViewById(R.id.textinput_modell);
