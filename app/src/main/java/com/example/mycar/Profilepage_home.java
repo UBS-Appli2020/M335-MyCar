@@ -50,6 +50,7 @@ public class Profilepage_home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(Profilepage_home.this, activity_unterkategorie.class);
                 String str5 = String.valueOf(k2_button.getText());
+                intent.putExtra("car",car);
                 intent.putExtra("buttonName",str5);
                 startActivity(intent);
             }
