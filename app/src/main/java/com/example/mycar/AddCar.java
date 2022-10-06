@@ -39,7 +39,6 @@ public class AddCar extends AppCompatActivity {
     TextView fehlermeldung;
     ImageView imageView3;
 
-    PreferenceManager preferenceManager;
     Intent camera;
 
     @Override
@@ -49,7 +48,6 @@ public class AddCar extends AppCompatActivity {
 
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
-        preferenceManager = PreferenceManager.getInstance(this);
 
         Intent intent = getIntent();
         String number = intent.getStringExtra("number_car");
