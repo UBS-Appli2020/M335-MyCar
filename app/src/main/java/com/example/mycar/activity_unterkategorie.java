@@ -16,8 +16,12 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class activity_unterkategorie extends AppCompatActivity {
@@ -53,7 +57,10 @@ public class activity_unterkategorie extends AppCompatActivity {
 
 
             Log.d("DEBUG",String.valueOf(kategorie));
-            if (String.valueOf(kategorie) != null){
+
+
+
+
                 LinearLayout linearLayout = new LinearLayout(this);
 
                 LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 600);
@@ -62,43 +69,86 @@ public class activity_unterkategorie extends AppCompatActivity {
                 layoutParams.leftMargin = 132;
 
                 linearLayout.setLayoutParams(layoutParams);
-                linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+                linearLayout.setOrientation(LinearLayout.VERTICAL);
 
                 linearLayout.setBackgroundResource(R.drawable.top_background);
 
                 Set<String> all_keys = kategorie.keySet();
+//                ArrayList<TextView> alltxtviews = new ArrayList<TextView>();
 
-                int j = 1;
-                for (Iterator<String> it = all_keys.iterator(); it.hasNext(); ) {
-                    String f = it.next();
-                    String keyname = "tv"+String.valueOf(j);
-                    TextView textView1 = new TextView(this);
-                    textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT));
-                    textView1.setGravity(1);
-                    textView1.setTextSize(32);
+//                TextView textView1 = new TextView(this);
+//                textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+//                        LinearLayout.LayoutParams.MATCH_PARENT));
+//                textView1.setGravity(1);
+//                textView1.setTextSize(16);
 
-                    textView1.setText(f);
-                    textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
 
-                    linearLayout.addView(textView1);
+//                textView1.setText("Breite");
+//                textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+//                linearLayout.addView(textView1);
+//
+//                TextView textView2 = new TextView(this);
+//                textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+//                        LinearLayout.LayoutParams.MATCH_PARENT));
+//                textView2.setGravity(1);
+//                textView2.setTextSize(16);
+//                textView2.setText("SUUIIII");
+//                textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+//                linearLayout.addView(textView2);
 
-                    TextView textView2 = new TextView(this);
-                    textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                            LinearLayout.LayoutParams.MATCH_PARENT));
-                    textView2.setGravity(1);
-                    textView2.setTextSize(32);
-                    textView2.setText(kategorie.get(keyname));
-                    textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                    linearLayout.addView(textView2);
-                    j++;
-                }
+                ArrayList<String> keys = new ArrayList<String>(all_keys);
+
+                TextView textView1 = new TextView(this);
+                textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView1.setGravity(1);
+                textView1.setTextSize(16);
+                textView1.setText(String.valueOf(keys.get(0) + ": " + kategorie.get(keys.get(0))));
+                textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+                linearLayout.addView(textView1);
+
+                TextView textView2 = new TextView(this);
+                textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView2.setGravity(1);
+                textView2.setTextSize(16);
+                textView2.setText(String.valueOf(keys.get(1) + ": " + kategorie.get(keys.get(1))));
+                textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+                linearLayout.addView(textView2);
+
+                TextView textView3 = new TextView(this);
+                textView3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView3.setGravity(1);
+                textView3.setTextSize(16);
+                textView3.setText(String.valueOf(keys.get(2) + ": " + kategorie.get(keys.get(2))));
+                textView3.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+                linearLayout.addView(textView3);
+
+                TextView textView4 = new TextView(this);
+                textView4.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView4.setGravity(1);
+                textView4.setTextSize(16);
+                textView4.setText(String.valueOf(keys.get(3) + ": " + kategorie.get(keys.get(3))));
+                textView4.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+                linearLayout.addView(textView4);
+                Log.d("DEBUG","HERE");
+                TextView textView5 = new TextView(this);
+                textView5.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+                textView5.setGravity(1);
+                textView5.setTextSize(16);
+                textView5.setText(String.valueOf(keys.get(4) + ": " + kategorie.get(keys.get(4))));
+                textView5.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+                linearLayout.addView(textView5);
+
+
+
+
+
 
                 main_profiles.addView(linearLayout);
-
-            }else{
-                break;
-            }
 
 
             i++;
@@ -168,7 +218,7 @@ public class activity_unterkategorie extends AppCompatActivity {
 
             }
 
-            return counter;
+            return (counter-1);
 
         }
     }

@@ -14,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -80,6 +82,9 @@ public class Profilepage_overview extends AppCompatActivity {
             textView1.setTextSize(32);
             textView1.setText(sh.getString("modell",""));
             textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+
+            ImageView sui = new ImageView(this);
+
 
             linearLayout.addView(textView1);
 
