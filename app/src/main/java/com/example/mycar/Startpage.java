@@ -27,7 +27,7 @@ public class Startpage extends AppCompatActivity {
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                delete_all();
+//                delete_all(); §
                 String number = check_how_many_cars();
                 Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
                 intent.putExtra("number_car",number);
