@@ -2,7 +2,6 @@ package com.example.mycar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -25,7 +24,7 @@ public class AddKategorie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.addkategorie);
+        setContentView(R.layout.activity_addkategorie);
 
         Intent intent = getIntent();
         String car = intent.getStringExtra("car");

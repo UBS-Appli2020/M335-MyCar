@@ -63,6 +63,7 @@
                     android:id="@+id/back_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@color/start_sc_blue"
 
                     app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
                     tools:ignore="MissingConstraints" />
@@ -93,11 +94,18 @@
 
                 <Button
                     android:id="@+id/k1_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".60"
+                    android:layout_width="268dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:backgroundTint="@color/start_sc_white"
                     android:text="Felgen"
-                    tools:ignore="MissingConstraints" />
+                    android:textColor="@color/start_sc_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.333"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="416dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -123,11 +131,18 @@
 
                 <Button
                     android:id="@+id/k2_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".60"
-                    android:gravity="center"
-                    android:text="Reifen" />
+                    android:layout_width="268dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:backgroundTint="@color/start_sc_white"
+                    android:text="Reifen"
+                    android:textColor="@color/start_sc_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.333"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="416dp" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -153,11 +168,18 @@
 
                 <Button
                     android:id="@+id/k4_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".60"
+                    android:layout_width="268dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:backgroundTint="@color/start_sc_white"
                     android:text="Motor"
-                    tools:ignore="MissingConstraints" />
+                    android:textColor="@color/start_sc_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.333"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="416dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -183,11 +205,18 @@
 
                 <Button
                     android:id="@+id/k3_button"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".60"
+                    android:layout_width="268dp"
+                    android:layout_height="66dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginEnd="70dp"
+                    android:backgroundTint="@color/start_sc_white"
                     android:text="Fahrwerk"
-                    tools:ignore="MissingConstraints" />
+                    android:textColor="@color/start_sc_black"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.333"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="416dp"/>
 
                 <LinearLayout
                     android:layout_width="0dp"

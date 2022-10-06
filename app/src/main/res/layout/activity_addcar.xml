@@ -24,8 +24,17 @@
 
         <Button
             android:id="@+id/upload_picture_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="268dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:backgroundTint="@color/start_sc_white"
+            android:textColor="@color/start_sc_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="416dp"
             android:text="Bild Hochladen" />
 
         <TextView
@@ -126,8 +135,17 @@
 
         <Button
             android:id="@+id/add_car_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="268dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            android:backgroundTint="@color/start_sc_white"
+            android:textColor="@color/start_sc_black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="416dp"
             android:text="Hinzufügen" />
 
     </LinearLayout>

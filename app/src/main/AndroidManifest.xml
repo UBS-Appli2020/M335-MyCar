@@ -41,21 +41,6 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity3Cam"
-            android:exported="false">
-
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".Profilepage_overview"
             android:exported="false">
             <meta-data
@@ -73,13 +58,6 @@
         </activity>
         <activity
             android:name=".AddCar"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

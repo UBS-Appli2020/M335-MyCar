@@ -19,7 +19,7 @@ public class Profilepage_home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profilepage_home);
+        setContentView(R.layout.activity_profilepage_home);
 
         Intent intent = getIntent();
         String car = intent.getStringExtra("car");
