@@ -67,7 +67,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="C:\Users\Nadina Amsler\Downloads\white.png" />
+                                                <entry key="imagePath" value="C:\github\M335-MyCar\app\src\main\res\mipmap-xhdpi\white.png" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -78,7 +78,20 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="C:\Users\NADINA~1\AppData\Local\Temp\ic_android_black_24dp.xml" />
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="C:\Users\NADINA~1\AppData\Local\Temp\baseline_directions_car_24.xml" />
+                                                <entry key="scalingPercent" value="62" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="foregroundClipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/C:/Users/Nadina%20Amsler/AppData/Local/JetBrains/Toolbox/apps/AndroidStudio/ch-0/213.7172.25.2113.9014738/plugins/android/lib/android.jar!/images/material/icons/materialicons/directions_car/baseline_directions_car_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -119,6 +132,13 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="backgroundAssetType" value="COLOR" />
+                                      <entry key="backgroundColor" value="ffffff" />
+                                      <entry key="foregroundAssetType" value="CLIP_ART" />
                                     </map>
                                   </option>
                                 </PersistentState>
