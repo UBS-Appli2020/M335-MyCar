@@ -55,7 +55,7 @@ public class Startpage extends AppCompatActivity {
 
 
             if (sh.getString("modell","").equals("")){
-
+                counter--;
                 Log.d("TTT","There is/are just " + counter +" Cars.");
                 break;
             }else{
