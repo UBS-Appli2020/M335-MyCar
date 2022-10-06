@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@color/start_sc_blue"
 
     tools:context=".Startpage">
+
 
     <LinearLayout
         android:layout_width="409dp"
@@ -18,50 +19,46 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="187dp"
-            app:srcCompat="@drawable/logo_placeholder_image" />
+            android:layout_width="328dp"
+            android:layout_height="328dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@mipmap/carblue"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="16dp" />
 
         <TextView
             android:id="@+id/title_of_application"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="113dp"
+            android:fontFamily="@font/anton"
             android:gravity="center"
-            android:textSize="32dp"
-            android:text="MyCar" />
+            android:text="MyCar"
+            android:textSize="48sp"
+            tools:ignore="MissingConstraints" />
 
         <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
-            android:orientation="horizontal"
-
-            android:weightSum="1.0">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".20"
-                android:orientation="horizontal" />
+            android:layout_marginTop="25dp"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/start_button"
-
-                android:layout_height="wrap_content"
-                android:layout_weight=".60"
-                android:layout_width="0dip"
-
-
+                android:layout_width="268dp"
+                android:layout_height="66dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginEnd="70dp"
+                android:backgroundTint="@color/start_sc_white"
                 android:text="Start!"
-
-
-                tools:ignore="MissingConstraints" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight=".20"
-
-                android:orientation="horizontal" />
+                android:textColor="@color/start_sc_black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="416dp" />
 
         </LinearLayout>
 
@@ -70,6 +67,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="© All rights reserved." />
+            android:text="© All rights reserved."
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="20dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="491dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
