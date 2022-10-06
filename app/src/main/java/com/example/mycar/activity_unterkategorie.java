@@ -33,132 +33,107 @@ public class activity_unterkategorie extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unterkategorie);
 
+//      Hollt sich die Daten der vorherigen Seite
         Intent intent = getIntent();
+
+//      Setzt die Variablen
         String buttonName = intent.getStringExtra("buttonName");
         String car = intent.getStringExtra("car");
 
+//      Sucht die Scrollview
         ScrollView app_layer = (ScrollView) findViewById (R.id.base_scrollbar);
 
+//      Erstellt ein neues LinearLayout
         LinearLayout main_profiles = new LinearLayout(this);
         main_profiles.setOrientation(LinearLayout.VERTICAL);
 
+//      Hollt sich die sharedpreferences
         SharedPreferences sh = getSharedPreferences(car, MODE_PRIVATE);
 
+//      Geht durch jede Subkategorie
         int i = 1;
         while (i <= count(car,buttonName)) {
 
+//          Hollt sich die Kategorie keys
             String kategorie_key = buttonName+String.valueOf(i);
-            Log.d("DEBUG",String.valueOf(kategorie_key));
 
+//          Hollt sich die gespeicherte liste
             String storedHashMapString = sh.getString(kategorie_key, "");
-            Log.d("DEBUG",storedHashMapString);
             java.lang.reflect.Type type = new TypeToken<HashMap<String, String>>(){}.getType();
             HashMap<String, String> kategorie = gson.fromJson(storedHashMapString, type);
 
-
             Log.d("DEBUG",String.valueOf(kategorie));
 
+            LinearLayout linearLayout = new LinearLayout(this);
 
-
-
-                LinearLayout linearLayout = new LinearLayout(this);
-
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 600);
-                layoutParams.rightMargin = 132;
-                layoutParams.topMargin = 132;
-                layoutParams.leftMargin = 132;
-
-                linearLayout.setLayoutParams(layoutParams);
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
-
-                linearLayout.setBackgroundResource(R.drawable.top_background);
-
-                Set<String> all_keys = kategorie.keySet();
-//                ArrayList<TextView> alltxtviews = new ArrayList<TextView>();
-
-//                TextView textView1 = new TextView(this);
-//                textView1.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                        LinearLayout.LayoutParams.MATCH_PARENT));
-//                textView1.setGravity(1);
-//                textView1.setTextSize(16);
-
-
-//                textView1.setText("Breite");
-//                textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-//                linearLayout.addView(textView1);
 //
-//                TextView textView2 = new TextView(this);
-//                textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-//                        LinearLayout.LayoutParams.MATCH_PARENT));
-//                textView2.setGravity(1);
-//                textView2.setTextSize(16);
-//                textView2.setText("SUUIIII");
-//                textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-//                linearLayout.addView(textView2);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 600);
+            layoutParams.rightMargin = 132;
+            layoutParams.topMargin = 132;
+            layoutParams.leftMargin = 132;
 
-                ArrayList<String> keys = new ArrayList<String>(all_keys);
+            linearLayout.setLayoutParams(layoutParams);
+            linearLayout.setOrientation(LinearLayout.VERTICAL);
 
-                LinearLayout.LayoutParams tv1layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
-                tv1layoutParams.topMargin = 100;
+            linearLayout.setBackgroundResource(R.drawable.top_background);
 
+            Set<String> all_keys = kategorie.keySet();
 
+            ArrayList<String> keys = new ArrayList<String>(all_keys);
 
-                TextView textView1 = new TextView(this);
-                textView1.setLayoutParams(tv1layoutParams);
-                textView1.setGravity(1);
-                textView1.setTextSize(16);
-
-                textView1.setText(String.valueOf(keys.get(0) + ": " + kategorie.get(keys.get(0))));
-                textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                linearLayout.addView(textView1);
-
-                TextView textView2 = new TextView(this);
-                textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                textView2.setGravity(1);
-                textView2.setTextSize(16);
-                textView2.setText(String.valueOf(keys.get(1) + ": " + kategorie.get(keys.get(1))));
-                textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                linearLayout.addView(textView2);
-
-                TextView textView3 = new TextView(this);
-                textView3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                textView3.setGravity(1);
-                textView3.setTextSize(16);
-                textView3.setText(String.valueOf(keys.get(2) + ": " + kategorie.get(keys.get(2))));
-                textView3.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                linearLayout.addView(textView3);
-
-                TextView textView4 = new TextView(this);
-                textView4.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                textView4.setGravity(1);
-                textView4.setTextSize(16);
-                textView4.setText(String.valueOf(keys.get(3) + ": " + kategorie.get(keys.get(3))));
-                textView4.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                linearLayout.addView(textView4);
-                Log.d("DEBUG","HERE");
-                TextView textView5 = new TextView(this);
-                textView5.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT));
-                textView5.setGravity(1);
-                textView5.setTextSize(16);
-                textView5.setText(String.valueOf(keys.get(4) + ": " + kategorie.get(keys.get(4))));
-                textView5.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
-                linearLayout.addView(textView5);
+            LinearLayout.LayoutParams tv1layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,  LinearLayout.LayoutParams.WRAP_CONTENT);
+            tv1layoutParams.topMargin = 100;
 
 
 
+            TextView textView1 = new TextView(this);
+            textView1.setLayoutParams(tv1layoutParams);
+            textView1.setGravity(1);
+            textView1.setTextSize(16);
 
+            textView1.setText(String.valueOf(keys.get(0) + ": " + kategorie.get(keys.get(0))));
+            textView1.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+            linearLayout.addView(textView1);
 
+            TextView textView2 = new TextView(this);
+            textView2.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            textView2.setGravity(1);
+            textView2.setTextSize(16);
+            textView2.setText(String.valueOf(keys.get(1) + ": " + kategorie.get(keys.get(1))));
+            textView2.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+            linearLayout.addView(textView2);
 
-                main_profiles.addView(linearLayout);
+            TextView textView3 = new TextView(this);
+            textView3.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            textView3.setGravity(1);
+            textView3.setTextSize(16);
+            textView3.setText(String.valueOf(keys.get(2) + ": " + kategorie.get(keys.get(2))));
+            textView3.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+            linearLayout.addView(textView3);
 
+            TextView textView4 = new TextView(this);
+            textView4.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            textView4.setGravity(1);
+            textView4.setTextSize(16);
+            textView4.setText(String.valueOf(keys.get(3) + ": " + kategorie.get(keys.get(3))));
+            textView4.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+            linearLayout.addView(textView4);
+            Log.d("DEBUG","HERE");
+            TextView textView5 = new TextView(this);
+            textView5.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT));
+            textView5.setGravity(1);
+            textView5.setTextSize(16);
+            textView5.setText(String.valueOf(keys.get(4) + ": " + kategorie.get(keys.get(4))));
+            textView5.setBackgroundColor(Color.parseColor("#FFFFFF")); // hex color 0xAARRGGBB
+            linearLayout.addView(textView5);
+
+            main_profiles.addView(linearLayout);
 
             i++;
-
-
 
         }
         app_layer.removeAllViews();
