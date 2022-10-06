@@ -18,13 +18,13 @@
         tools:ignore="MissingConstraints">
 
         <TextView
-            android:id="@+id/label_modell"
+            android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
             <!--android:text="Modell"-->
 
         <EditText
-            android:id="@+id/textinput_modell"
+            android:id="@+id/v1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -32,13 +32,13 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/label_baujahr"
+            android:id="@+id/tv2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
 
         <EditText
-            android:id="@+id/textinput_baujahr"
+            android:id="@+id/v2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -46,13 +46,13 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/label_ps"
+            android:id="@+id/tv3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
 
         <EditText
-            android:id="@+id/textinput_ps"
+            android:id="@+id/v3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -60,13 +60,13 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/label_fznumber"
+            android:id="@+id/tv4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
 
         <EditText
-            android:id="@+id/textinput_fznumber"
+            android:id="@+id/v4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -74,19 +74,29 @@
             android:text="" />
 
         <TextView
-            android:id="@+id/textview5"
+            android:id="@+id/tv5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="" />
 
         <EditText
-            android:id="@+id/textinput_textview5"
+            android:id="@+id/v5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="" />
 
+        <TextView
+            android:id="@+id/fehlermeldung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="" />
+        <Button
+            android:id="@+id/add_kategorie_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hinzufügen" />
 
 
     </LinearLayout>
