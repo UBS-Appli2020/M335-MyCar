@@ -23,7 +23,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-
+/**
+ * Das ist die Homeseite einer Kategorie, hier kann man alle Dinge sehen die man in einer Kategorie gespeichert hat
+ *
+ */
 public class activity_unterkategorie extends AppCompatActivity {
     Button add_Kategorie;
     Gson gson = new Gson();
