@@ -34,16 +34,8 @@ public class Profilepage_overview extends AppCompatActivity {
         String number = intent.getStringExtra("number_car");
         ScrollView app_layer = (ScrollView) findViewById (R.id.base_scrollbar);
 
-//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.base_linearlayout);
-
         LinearLayout main_profiles = new LinearLayout(this);
         main_profiles.setOrientation(LinearLayout.VERTICAL);
-
-//        SharedPreferences sh2 = getSharedPreferences("Car4", MODE_PRIVATE);
-//
-//        @SuppressLint("CommitPrefEdits") SharedPreferences.Editor myEdit = sh2.edit();
-//        myEdit.putString("modell","Gt 500");
-//        myEdit.apply();
 
         Log.d("TTT",number);
         int i = 1;
@@ -55,10 +47,10 @@ public class Profilepage_overview extends AppCompatActivity {
 
 
 
-
+            // Erstellt ein neues LinearLayout
             LinearLayout linearLayout = new LinearLayout(this);
-//            linearLayout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-//                    LayoutParams.MATCH_PARENT));
+
+            // Erstellt das Layout
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, 600);
             layoutParams.rightMargin = 132;
             layoutParams.topMargin = 132;
@@ -66,38 +58,39 @@ public class Profilepage_overview extends AppCompatActivity {
 
             linearLayout.setLayoutParams(layoutParams);
             linearLayout.setOrientation(LinearLayout.VERTICAL);
-//            linearLayout.setBackgroundColor(Color.parseColor("#FFFFFF"));
             linearLayout.setBackgroundResource(R.drawable.top_background);
 
             LinearLayout.LayoutParams layoutParams2 =new LinearLayout.LayoutParams(300, 300);
             layoutParams2.gravity=Gravity.CENTER;
 
-
+            // Setzt das Bild in ein Imageview
             ImageView imageview = new ImageView(this);
-//            TODO
+
+            // Kontrolliert es ein gespeichertes Bild gibt
             if(sh.contains("bitmap"))
             {
-
+                // Hollt das Bild als String aus dem Sharedpreference
                 String encodedImage = sh.getString("bitmap",null);
 
+                // Decoded es zu byte
                 byte[] b = Base64.decode(encodedImage, Base64.DEFAULT);
 
+                // Decoded es zu einer Bitmap
                 Bitmap bitmap2 = BitmapFactory.decodeByteArray(b, 0, b.length);
 
+            // Setzt das Layout
             imageview.setImageBitmap(bitmap2);
             imageview.setLayoutParams(layoutParams2);
 
 
 
-
-
-
             linearLayout.addView(imageview);
 
+            // Erstellt ein Layout
             LinearLayout.LayoutParams layoutParams3 = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
             layoutParams3.bottomMargin=70;
 
-            // Add textviews
+            // Erstellt das Textview mit layout
             TextView textView1 = new TextView(this);
             textView1.setLayoutParams(layoutParams3);
             textView1.setGravity(1);
@@ -108,26 +101,11 @@ public class Profilepage_overview extends AppCompatActivity {
 
             ImageView sui = new ImageView(this);
 
-
+            // Fügt alles ins linearLayout
             linearLayout.addView(textView1);
             }
 
             main_profiles.addView(linearLayout);
-
-//            TextView textView2 = new TextView(this);
-//            LayoutParams layoutParams = new LayoutParams(LayoutParams.WRAP_CONTENT,
-//                    LayoutParams.WRAP_CONTENT);
-//            layoutParams.gravity = Gravity.RIGHT;
-//            layoutParams.setMargins(10, 10, 10, 10); // (left, top, right, bottom)
-//            textView2.setLayoutParams(layoutParams);
-//            textView2.setText("programmatically created TextView2");
-//            textView2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-//            textView2.setBackgroundColor(0xffffdbdb); // hex color 0xAARRGGBB
-//            linearLayout.addView(textView2);
-
-//            app_layer.(linearLayout);
-//            setContentView(linearLayout);
-//            base_scrollbar.addView(linearLayout);
 
             i++;
 
@@ -140,15 +118,12 @@ public class Profilepage_overview extends AppCompatActivity {
         });
 
         }
+
+        // Fügt alles ins scrollview
         app_layer.removeAllViews();
         app_layer.addView(main_profiles);
 
-
-//        String modell_name =  sh.getString("modell","");
-//        txtview = (TextView) findViewById(R.id.modell_name);
-//        txtview.setText(modell_name);
-
-
+        // Hollt button und setzt einen Listener
         button=(Button)findViewById(R.id.first_add_car);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,85 +133,28 @@ public class Profilepage_overview extends AppCompatActivity {
             }
         });
 
-//        LinearLayout app_layer = (LinearLayout) findViewById (R.id.car_1);
-//        app_layer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("TESTUS","PRESSED");
-//                gotoProfile();
-//            }
-//        });
     }
 
     private void gotoAddcar(String number){
+        /*
+        * Diese Function leitet auf die Klasse AddCar
+        * Mitgegeben wird der key zum sharedpreference des Autos
+        *
+        * */
         Intent intent=new Intent(Profilepage_overview.this,AddCar.class);
         intent.putExtra("number_car",number);
         startActivity(intent);
     }
 
     private void gotoProfile(String carname){
+        /*
+         * Diese Function leitet auf die Klasse Profilepage_home
+         * Mitgegeben wird der key zum sharedpreference des Autos
+         *
+         * */
         Intent intent=new Intent(Profilepage_overview.this,Profilepage_home.class);
         Log.d("uebergabe",carname);
         intent.putExtra("car",carname);
         startActivity(intent);
-    }
-
-    // This callback is called only when there is a saved instance that is previously saved by using
-    // onSaveInstanceState(). We restore some state in onCreate(), while we can optionally restore
-    // other state here, possibly usable after onStart() has completed.
-    // The savedInstanceState Bundle is same as the one used in onCreate().
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Log.d("LIFECYCLE", "onRestoreInstanceState");
-    }
-
-    // invoked when the activity may be temporarily destroyed, save the instance state here
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d("LIFECYCLE", "onSaveInstanceState");
-    }
-
-    @Override
-    protected void onStart() {
-        // call the superclass method first
-        super.onStart();
-        Log.d("LIFECYCLE", "onStart");
-    }
-
-    @Override
-    protected void onStop() {
-        // call the superclass method first
-        super.onStop();
-        Log.d("LIFECYCLE", "onStop");
-    }
-
-    @Override
-    protected void onResume() {
-        // call the superclass method first
-        super.onResume();
-        Log.d("LIFECYCLE", "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        // call the superclass method first
-        super.onPause();
-        Log.d("LIFECYCLE", "onPause");
-    }
-
-    @Override
-    protected void onRestart() {
-        // call the superclass method first
-        super.onRestart();
-        Log.d("LIFECYCLE", "onRestart");
-    }
-
-    @Override
-    protected void onDestroy() {
-        // call the superclass method first
-        super.onDestroy();
-        Log.d("LIFECYCLE", "onDestroy");
     }
 }

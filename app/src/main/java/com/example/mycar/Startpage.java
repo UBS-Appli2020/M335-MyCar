@@ -20,14 +20,14 @@ public class Startpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_startpage);
 
-
+        // Holt sich start button und fügt einen Listener hinzu
         start_button =(Button)findViewById(R.id.start_button);
-
-
         start_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                delete_all();
+
+                // Holt sich anzahl gepeicherter Autos
                 String number = check_how_many_cars();
                 Intent intent=new Intent(Startpage.this, Profilepage_overview.class);
                 intent.putExtra("number_car",number);
@@ -37,6 +37,10 @@ public class Startpage extends AppCompatActivity {
     }
 
     private void delete_all(){
+        /*
+         * Löscht alle gespeicherten Sharedpreferences
+         *
+         * */
         File sharedPreferenceFile = new File("/data/data/"+ getPackageName()+ "/shared_prefs/");
         File[] listFiles = sharedPreferenceFile.listFiles();
         for (File file : listFiles) {
@@ -45,6 +49,10 @@ public class Startpage extends AppCompatActivity {
     }
 
     private String check_how_many_cars(){
+        /*
+         * Diese Funktion zählt alle gespeichereten Autos und gibt diese nummer als String zurück
+         *
+         * */
         int counter = 1;
         int previous_counter = 0;
 
@@ -71,71 +79,5 @@ public class Startpage extends AppCompatActivity {
         }
 
     }
-
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
-    }
-
-    // This callback is called only when there is a saved instance that is previously saved by using
-    // onSaveInstanceState(). We restore some state in onCreate(), while we can optionally restore
-    // other state here, possibly usable after onStart() has completed.
-    // The savedInstanceState Bundle is same as the one used in onCreate().
-    @Override
-    public void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);//hallo ich bin eine frosch
-        Log.d("LIFECYCLE", "onRestoreInstanceState");
-    }
-
-    // invoked when the activity may be temporarily destroyed, save the instance state here
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.d("LIFECYCLE", "onSaveInstanceState");
-    }
-
-    @Override
-    protected void onStart() {
-        // call the superclass method first
-        super.onStart();
-        Log.d("LIFECYCLE", "onStart");
-    }
-
-    @Override
-    protected void onStop() {
-        // call the superclass method first
-        super.onStop();
-        Log.d("LIFECYCLE", "onStop");
-    }
-
-    @Override
-    protected void onResume() {
-        // call the superclass method first
-        super.onResume();
-        Log.d("LIFECYCLE", "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        // call the superclass method first
-        super.onPause();
-        Log.d("LIFECYCLE", "onPause");
-    }
-
-    @Override
-    protected void onRestart() {
-        // call the superclass method first
-        super.onRestart();
-        Log.d("LIFECYCLE", "onRestart");
-    }
-
-    @Override
-    protected void onDestroy() {
-        // call the superclass method first
-        super.onDestroy();
-        Log.d("LIFECYCLE", "onDestroy");
-    }
-
-
-
 
 }

@@ -77,6 +77,8 @@ public class AddKategorie extends AppCompatActivity {
                     sh.edit().putString(kategorie_key,hashmapasString).apply();
 
                     Intent intent = new Intent(AddKategorie.this, activity_unterkategorie.class);
+                    intent.putExtra("car",car);
+                    intent.putExtra("buttonName",kategorie);
                     startActivity(intent);
 
                 } else {
